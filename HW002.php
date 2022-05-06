@@ -81,7 +81,7 @@ echo nl2br ("\n xxxxxxxxxxxxx \n");
 echo nl2br ("\n Sestas uzdavinys \n");
 
 $sk=rand(1, 6);
-$h="?><h$sk>$sk</h$sk><?php";
+$h="<h$sk>$sk</h$sk>";
 echo $h;
 
 echo nl2br ("\n xxxxxxxxxxxxx \n");
@@ -90,7 +90,33 @@ $pirmas = rand(-10, 10);
 $antras = rand(-10, 10);
 $trecias = rand(-10, 10);
 
-echo "<div sstyle='color:red'></div>";
+if ($pirmas<0) {
+    echo "<font color=lightgreen>$pirmas</font>";
+} elseif ($pirmas>0) {
+    echo "<font color=blue>$pirmas</font>";
+} else {
+    echo "<font color=red>$pirmas</font>";
+}
+
+echo nl2br ("\n");
+
+if ($antras<0) {
+    echo "<font color=lightgreen>$antras</font>";
+} elseif ($antras>0) {
+    echo "<font color=blue>$antras</font>";
+} else {
+    echo "<font color=red>$antras</font>";
+}
+
+echo nl2br ("\n");
+
+if ($trecias<0) {
+    echo "<font color=lightgreen>$trecias</font>";
+} elseif ($trecias>0) {
+    echo "<font color=blue>$trecias</font>";
+} else {
+    echo "<font color=red>$trecias</font>";
+}
 
 echo nl2br ("\n xxxxxxxxxxxxx \n");
 echo nl2br ("\n Astuntas uzdavinys \n");
