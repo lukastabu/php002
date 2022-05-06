@@ -150,3 +150,140 @@ $min3 = $min2 % 60;
 $val1 = $val + floor($min2/60);
 if ($val1 > 23) {$val1=0;}
 echo ", o pridėjus $plius sekundziu, bus $val1 valandu $min3 minuciu ir $sek2 sekundziu";
+
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Vienuolikta uzdavinys \n");
+
+$a1 = rand(1000, 9999);
+$a2 = rand(1000, 9999);
+$a3 = rand(1000, 9999);
+$a4 = rand(1000, 9999);
+$a5 = rand(1000, 9999);
+$a6 = rand(1000, 9999);
+
+$m1 = ($a1 <=> $a1) + ($a1 <=> $a2) + ($a1 <=> $a3) + ($a1 <=> $a4) + ($a1 <=> $a5) + ($a1 <=> $a6);
+$m2 = ($a2 <=> $a1) + ($a2 <=> $a2) + ($a2 <=> $a3) + ($a2 <=> $a4) + ($a2 <=> $a5) + ($a2 <=> $a6);
+$m3 = ($a3 <=> $a1) + ($a3 <=> $a2) + ($a3 <=> $a3) + ($a3 <=> $a4) + ($a3 <=> $a5) + ($a3 <=> $a6);
+$m4 = ($a4 <=> $a1) + ($a4 <=> $a2) + ($a4 <=> $a3) + ($a4 <=> $a4) + ($a4 <=> $a5) + ($a4 <=> $a6);
+$m5 = ($a5 <=> $a1) + ($a5 <=> $a2) + ($a5 <=> $a3) + ($a5 <=> $a4) + ($a5 <=> $a5) + ($a5 <=> $a6);
+$m6 = ($a6 <=> $a1) + ($a6 <=> $a2) + ($a6 <=> $a3) + ($a6 <=> $a4) + ($a6 <=> $a5) + ($a6 <=> $a6);
+
+if ($m1==5) {echo "$a1\n";}
+elseif ($m2==5) {echo "$a2\n";}
+elseif ($m3==5) {echo "$a3\n";}
+elseif ($m4==5) {echo "$a4\n";}
+elseif ($m5==5) {echo "$a5\n";}
+elseif ($m6==5) {echo "$a6\n";}
+
+if ($m1==3) {echo "$a1\n";}
+elseif ($m2==3) {echo "$a2\n";}
+elseif ($m3==3) {echo "$a3\n";}
+elseif ($m4==3) {echo "$a4\n";}
+elseif ($m5==3) {echo "$a5\n";}
+elseif ($m6==3) {echo "$a6\n";}
+
+if ($m1==1) {echo "$a1\n";}
+elseif ($m2==1) {echo "$a2\n";}
+elseif ($m3==1) {echo "$a3\n";}
+elseif ($m4==1) {echo "$a4\n";}
+elseif ($m5==1) {echo "$a5\n";}
+elseif ($m6==1) {echo "$a6\n";}
+
+if ($m1==-1) {echo "$a1\n";}
+elseif ($m2==-1) {echo "$a2\n";}
+elseif ($m3==-1) {echo "$a3\n";}
+elseif ($m4==-1) {echo "$a4\n";}
+elseif ($m5==-1) {echo "$a5\n";}
+elseif ($m6==-1) {echo "$a6\n";}
+
+if ($m1==-3) {echo "$a1\n";}
+elseif ($m2==-3) {echo "$a2\n";}
+elseif ($m3==-3) {echo "$a3\n";}
+elseif ($m4==-3) {echo "$a4\n";}
+elseif ($m5==-3) {echo "$a5\n";}
+elseif ($m6==-3) {echo "$a6\n";}
+
+if ($m1==-5) {echo "$a1\n";}
+elseif ($m2==-5) {echo "$a2\n";}
+elseif ($m3==-5) {echo "$a3\n";}
+elseif ($m4==-5) {echo "$a4\n";}
+elseif ($m5==-5) {echo "$a5\n";}
+elseif ($m6==-5) {echo "$a6\n";}
+
+
+/*
+echo $a1;
+if ($a2>$a1) {
+    echo $a2.$a1;
+    if ($a3>$a2) {
+        echo $a3.$a2.$a1;
+    } elseif ($a3>$a1) {
+        echo $a2.$a3.$a1;
+    } else echo $a2.$a1.$a3;
+} else echo $a1.$a2;
+*/
+
+/*
+if ($a1>$a2) {
+    $a12 = $a1.$a2;
+    if ($a3>$a1) {
+        $a123=$a3.$a1.$a2;
+        if ($a4>$a3){
+            $a1234=$a4.$a3.$a1.$a2;
+            if ($a5>$a4) {
+                $a12345=$a5.$a4.$a3.$a1.$a2;
+                if ($a6>$a5) {
+                    $a123456 = $a6.$a5.$a4.$a3.$a1.$a2;
+                } elseif ($a6>$a4) {
+                    $a123456 = $a5.$a6.$a4.$a3.$a1.$a2;
+                } elseif ($a6>$a3) {
+                    $a123456 = $a5.$a4.$a6.$a3.$a1.$a2;
+                } elseif ($a6>$a1) {
+                    $a123456 = $a5.$a4.$a3.$a6.$a1.$a2;
+                } elseif ($a6>$a2) {
+                    $a123456 = $a5.$a4.$a3.$a1.$a6.$a2;
+                } elseif ($a6<$a2) {
+                    $a123456 = $a5.$a4.$a3.$a1.$a2.$a6;
+                }
+            } elseif ($a5>$a3) {
+                $a12345=$a4.$a5.$a3.$a1.$a2;
+                {
+                    # code...
+                }
+            }
+        }
+        elseif ($a4>$a1) {
+            $a1234 = $a3.$a4.$a1.$a2;
+        } elseif ($a4>$a2) {
+            $a1234 = $a3.$a1.$a4.$a2;
+        } elseif ($a4<$a2) {
+            $a1234 = $a3.$a1.$a2.$a4;
+        }
+    }
+    elseif ($a3>$a2) {
+        $a123=$a1.$a3.$a2;
+    } elseif ($a3<$a2) {
+        $a123=$a1.$a2.$a3;
+    }
+} elseif ($a2>$a1) {
+    $a12 = $a2.$a1;
+    if ($a3>$a2) {
+        $a123=$a3.$a2.$a1;
+        if ($a4>$a3){
+            $a1234=$a4.$a3.$a2.$a1;
+            if ($a5>$a4) {
+                $a12345=$a5.$a4.$a3.$a2.$a1;
+                if ($a6>$a5) {
+                    $a123456 = $a6.$a5.$a4.$a3.$a2.$a1;
+                }
+            }
+        }
+    } elseif ($a3>$a1) {
+        $a123 = $a2.$a3.$a1;
+    } elseif ($a3<$a1) {
+        $a123 = $a2.$a1.$a3;
+    };
+}
+
+echo $a123456;
+*/
