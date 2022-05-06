@@ -143,7 +143,10 @@ $sek = rand(0, 59);
 echo "dabar yra $val valandu $min minuciu ir $sek sekundziu";
 $plius = rand(0, 300);
 $sek1 = $sek + $plius;
-if ($sek1>59) {
-    $sek2 = $sek % 60;
-    plius
-}
+$min1 = floor($sek1/60);
+$sek2 = $sek1 - ($min1*60);
+$min2 = $min + $min1;
+$min3 = $min2 % 60;
+$val1 = $val + floor($min2/60);
+if ($val1 > 23) {$val1=0;}
+echo ", o pridėjus $plius sekundziu, bus $val1 valandu $min3 minuciu ir $sek2 sekundziu";
