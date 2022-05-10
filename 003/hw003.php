@@ -74,6 +74,8 @@ echo $star;
 echo nl2br ("\n");
 echo substr($star, 19, 5);
 
+// NAUDOTI REGEX
+
 echo nl2br ("\n xxxxxxxxxxxxx \n");
 echo nl2br ("\n Devintas uzdavinys \n");
 
@@ -104,8 +106,26 @@ $ieskomas3 = sizeof($ieskomas2);
 echo $ieskomas3;
 }
 
+function maziauUz6($ieskomas)
+{
+$ieskomas1 = str_word_count($ieskomas, 1);
+$ieskomas2 = array_filter(
+    $ieskomas1,
+    function ($value) {
+        return strlen($value) < 6;
+    }
+);
+print_r ($ieskomas2);
+$ieskomas3 = sizeof($ieskomas2);
+echo $ieskomas3;
+}
+
+
 daugiauUz5($menace);
 daugiauUz5($nereikia);
+
+maziauUz6($menace);
+maziauUz6($nereikia);
 
 
 echo nl2br ("\n xxxxxxxxxxxxx \n");
@@ -130,18 +150,16 @@ echo sukurtiZodi($n);
 echo nl2br ("\n xxxxxxxxxxxxx \n");
 echo nl2br ("\n Vienuoliktas uzdavinys \n");
 
-$n=10;
-function sukurti10($n) {
-    $zodziai = $menace + $nereikia;
-    $stringas = '';
-  
-    for ($i = 0; $i < $n; $i++) {
-        $index = rand(0, str_word_count($zodziai, 0));
-        $stringas .= $zodziai[$index];
-    }
-  
-    return $stringas;
-}
 
+$zodziai = explode(' ',$menace. ' '.$nereikia);
+print_r($zodziai);
 
-sukurti10($n);
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+shuffle($zodziai);
+print_r($zodziai);
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+
+$zodziai = array_splice($zodziai, 0, 10);
+
+$zodziai2 = implode(' ', $zodziai);
+echo $zodziai2;
