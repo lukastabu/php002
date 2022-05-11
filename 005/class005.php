@@ -91,7 +91,7 @@ echo "$a, $b, $c";
 echo '<br>';
 
 unset($c);
-// $c = 4;
+$c = 4;
 echo "$a, $b, $c";
 
 echo '<br>';
