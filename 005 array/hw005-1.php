@@ -276,20 +276,96 @@ foreach ($abcCounted as $key => $value) {
 
 echo "unikaliu: $abcUnique<br>pasikartojanciu: $abcRepeating";
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Sestas uzdavinys \n");
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Sestas uzdavinys \n");
+//Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. 
+//Masyvų ilgiai 100. Masyvų reikšmės turi būti unikalios savo masyve (t.y. neturi kartotis).
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Septintas uzdavinys \n");
+$xxx = [];
+while (sizeof($xxx) < 100) {
+    $ranxxx = rand(100, 999);
+    if (!(in_array($ranxxx, $xxx))) {
+        $xxx[] += $ranxxx;
+    }
+}
+// print_r ($xxx);
+// print_r (array_count_values($xxx));
+$yyy = [];
+while (sizeof($yyy) < 100) {
+    $ranyyy = rand(100, 999);
+    if (!(in_array($ranyyy, $yyy))) {
+        $yyy[] += $ranyyy;
+    }
+}
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Septintas uzdavinys \n");
+//Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra 
+//pirmame 6 uždavinio masyve, bet nėra antrame 6 uždavinio masyve.
 
+$xxxyyyUnikalus = [];
+
+foreach ($xxx as $key => $value) {
+    if (!(in_array($value, $yyy))) {
+        $xxxyyyUnikalus[] += $value;
+    }
+}
+// print_r($xxxyyyUnikalus);
+
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Astuntas uzdavinys \n");
+//Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 6 uždavinio masyvuose
+$xxxyyyPasikartojantys = [];
+$xxxyyy = array_merge($xxx, $yyy);
+// print_r($xxxyyy);
+$xxxyyyCounted = array_count_values($xxxyyy);
+foreach ($xxxyyyCounted as $key => $value) {
+    if ($value > 1) {
+        $xxxyyyPasikartojantys[] += $key;
+    }
+}
+
+// print_r($xxxyyyCounted);
 // echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Astuntas uzdavinys \n");
+// print_r($xxxyyyPasikartojantys);
+
 
 // echo nl2br ("\n xxxxxxxxxxxxx \n");
 // echo nl2br ("\n Devintas uzdavinys \n");
+//Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės iš būtų antrojo masyvo
+// $xIndexYreiksmes = [];
+// foreach ($xxx as $key => $value) {
+    
+// }
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Desimtas uzdavinys \n");
+//Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25.
+//Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.
+$pirm = rand(5, 25);
+$antr = rand(5, 25);
+$pradinisMasyvas = [];
+$pradinisMasyvas[] += $pirm;
+$pradinisMasyvas[] += $antr;
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Desimtas uzdavinys \n");
+function genMas ($m)
+{
+    for ($i=0; $i < 8; $i++) {
+        $m[] = $m[$i] + $m[($i+1)];
+    }
+    return $m;
+}
+
+$suminisMasyvas = genMas($pradinisMasyvas);
+print_r($pradinisMasyvas);
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+print_r($suminisMasyvas);
+
 
 // echo nl2br ("\n xxxxxxxxxxxxx \n");
 // echo nl2br ("\n Vienuoliktas uzdavinys \n");
+//Sugeneruokite 101 elemento masyvą su atsitiktiniais skaičiais nuo 0 iki 300. 
+//Reikšmes kurios tame masyve yra ne unikalios pergeneruokite iš naujo taip, kad visos reikšmės masyve būtų unikalios. 
+//Išrūšiuokite masyvą taip, kad jo didžiausia reikšmė būtų masyvo viduryje, 
+//o einant nuo jos link masyvo pradžios ir pabaigos reikšmės mažėtų. 
+//Paskaičiuokite pirmos ir antros masyvo dalies sumas (neskaičiuojant vidurinės). 
+//Jeigu sumų skirtumas (modulis, absoliutus dydis) yra didesnis nei | 30 | rūšiavimą kartokite. 
+//(Kad sumos nesiskirtų viena nuo kitos daugiau nei per 30)
