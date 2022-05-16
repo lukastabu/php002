@@ -119,30 +119,110 @@ print_r($masyvAZ);
 
 
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Penktas uzdavinys \n");
-//  _
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Penktas uzdavinys \n");
+//  Sukurkite masyvą iš 30 elementų. Kiekvienas masyvo elementas yra masyvas 
+//[user_id => xxx, place_in_row => xxx] user_id atsitiktinis unikalus skaičius
+// nuo 1 iki 1000000, place_in_row atsitiktinis skaičius nuo 0 iki 100
 
+$userIDs = [];
+for ($i=0; $i < 3; $i++) { 
+    $elementinisMasyvs = [];
+    $key = rand(1, 10);
+    $elementinisMasyvs[] = "user_id => $key";
+    $userIDs[] = $elementinisMasyvs;
+}
+
+$placeRow = [];
+for ($i=0; $i < 3; $i++) { 
+    $elementinisMasyvs = [];
+    $place = rand(1, 100);
+    $elementinisMasyvs[] = "place_in_row => $place";
+    $placeRow[] = $elementinisMasyvs;
+}
+
+print_r($userIDs);
+print_r($placeRow);
+
+$sujungtas = array_combine($userIDs, $placeRow);
+print_r($sujungtas);
 
 // echo nl2br ("\n xxxxxxxxxxxxx \n");
 // echo nl2br ("\n Sestas uzdavinys \n");
-//  _
+//  Išrūšiuokite 5 uždavinio masyvą pagal user_id didėjančia tvarka. 
+//Ir paskui išrūšiuokite pagal place_in_row mažėjančia tvarka
 
 
 // echo nl2br ("\n xxxxxxxxxxxxx \n");
 // echo nl2br ("\n Septintas uzdavinys \n");
-//  _
+//  Prie 6 uždavinio masyvo antro lygio masyvų pridėkite dar du elementus: 
+//name ir surname. Elementus užpildykite stringais iš atsitiktinai sugeneruotų
+//lotyniškų raidžių, kurių ilgiai nuo 5 iki 15
 
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Astuntas uzdavinys \n");
-//  _
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Astuntas uzdavinys \n");
+//  Sukurkite masyvą iš 10 elementų. Masyvo reikšmes užpildykite pagal taisyklę: 
+//generuokite skaičių nuo 0 iki 5. Ir sukurkite tokio ilgio masyvą. 
+//Jeigu reikšmė yra 0 masyvo nekurkite. Antro lygio masyvo reikšmes užpildykite 
+//atsitiktiniais skaičiais nuo 0 iki 10. 
+//Ten kur masyvo nekūrėte reikšmę nuo 0 iki 10 įrašykite tiesiogiai
+$is10 = [];
+for ($i=0; $i < 10; $i++) { 
+    $elementinisMasyvs = [];
+    $j = rand(0, 5);
+    if ($j == 0) {
+        $is10[] = rand(0, 10);
+    } else {
+        for ($k = 0; $k < $j; $k++) { $elementinisMasyvs[$k] = rand(0, 10); 
+        }
+    $is10[] = $elementinisMasyvs;
+    } 
+}
 
+print_r($is10);
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Devintas uzdavinys \n");
-//  _
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Devintas uzdavinys \n"); // kaip reikia isrusiuoti???
+// Paskaičiuokite 8 uždavinio masyvo visų reikšmių sumą ir 
+//išrūšiuokite masyvą taip, kad pirmiausiai eitų mažiausios masyvo reikšmės
+// arba jeigu reikšmė yra masyvas, to masyvo reikšmių sumos.
+function masyvoSuma ($m) {
+    $suma = 0;
+    foreach($m as $value) {
+        if (!is_array($value)) {
+            $suma += $value;
+        }
+        else {
+            $suma += masyvoSuma($value);
+        }
+    }
+    return $suma;
+}
 
+echo masyvoSuma($is10);
+
+function masyvuPalyginimas ($a, $b) {
+    if (is_array($a)) {
+        $a = 0;
+        foreach ($a as $value) {
+            $a += $value;
+        }
+    } else {
+        $a = $a;
+    }
+    if (is_array($b)) {
+        $b = 0;
+        foreach ($b as $value) {
+            $b += $value;
+        }
+    } else {
+        $b = $b;
+    }
+    $a <=> $b;
+}
+usort($is10, 'masyvuPalyginimas');
+print_r($is10);
 
 // echo nl2br ("\n xxxxxxxxxxxxx \n");
 // echo nl2br ("\n Desimtas uzdavinys \n");
