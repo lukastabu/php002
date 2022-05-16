@@ -1,5 +1,5 @@
 <?php
-echo 'FUUUNkcijos';
+echo 'FUUUNkcijos 1';
 echo '<br><br>';
 
 // funkcijos deklaravimas - gali but tik vienas
