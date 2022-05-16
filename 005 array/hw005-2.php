@@ -48,30 +48,75 @@ echo nl2br ("\n xxxxxxxxxxxxx \n");
 // c) Suskaičiuokite kiekvieno antro lygio masyvų su vienodais indeksais sumas
 //(t.y. suma reikšmių turinčių indeksą 0, 1 ir t.t.);
 
-$sumaIndex = [];
+$sumapirmo = 0;
+$sumaantro = 0;
+$sumatrecio = 0;
+$sumaketvirto = 0;
+$sumapenkto = 0;
 foreach ($masyvs as $key => $value) {
     foreach ($value as $key1 => $value1) {
-        $sumaIndex[$key1] += $value[$key1]; 
+        if ($key1 == 0) { $sumapirmo += $value[$key1]; }
+        if ($key1 == 1) { $sumaantro += $value[$key1]; }
+        if ($key1 == 2) { $sumatrecio += $value[$key1]; }
+        if ($key1 == 3) { $sumaketvirto += $value[$key1]; }
+        if ($key1 == 4) { $sumapenkto += $value[$key1]; }
     }
 }
-print_r($sumaIndex);
-
+echo "pirmu suma yra $sumapirmo <br>
+antru suma yra $sumaantro <br>
+treciu suma yra $sumatrecio <br>
+ketvirtu suma yra $sumaketvirto <br>
+penktu suma yra $sumapenkto <br>";
+echo nl2br ("\n xxxxxxxxxxxxx \n");
 
 
 // d) Visus masyvus “pailginkite” iki 7 elementų;
+foreach ($masyvs as $key => &$value) {
+    while (sizeof($value) < 7) {
+        $value[] = rand(5, 25);
+    }
+}
+unset($value);
+// print_r($masyvs);
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+
 // e) Suskaičiuokite kiekvieno iš antro lygio masyvų elementų sumą atskirai ir
 //sumas panaudokite kaip reikšmes sukuriant naują masyvą. T.y. pirma naujo masyvo reikšmė
 //turi būti lygi mažesnio masyvo, turinčio indeksą 0 dideliame masyve, visų elementų sumai;
 
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Trecias uzdavinys \n");
-// _
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Trecias uzdavinys \n");
+// Sukurkite masyvą iš 10 elementų. Kiekvienas masyvo elementas turi būti masyvas
+//su atsitiktiniu kiekiu nuo 2 iki 20 elementų. Elementų reikšmės atsitiktinai parinktos raidės iš intervalo A-Z. 
+//Išrūšiuokite antro lygio masyvus pagal abėcėlę (t.y. tuos kur su raidėm).
+$masyvAZ = [];
+for ($i=0; $i < 10; $i++) { 
+    $raidinisMasyvs = [];
+    for ($j=0; $j < rand(2, 20); $j++) { 
+        $raidinisMasyvs[] = (range('A', 'Z')[rand(0, 25)]);
+    }
+    $masyvAZ[] = $raidinisMasyvs;
+}
+
+foreach ($masyvAZ as $key => &$value) {
+    sort($value);
+
+}
+unset($value);
+
+// print_r($masyvAZ);
 
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Ketvirtas uzdavinys \n");
-//  _
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Ketvirtas uzdavinys \n");
+//  Išrūšiuokite trečio uždavinio pirmo lygio masyvą taip, kad 
+//elementai kurių masyvai trumpiausi eitų pradžioje. 
+sort($masyvAZ);
+print_r($masyvAZ);
+
+//Masyvai kurie turi bent vieną “K” raidę, visada būtų didžiojo masyvo visai pradžioje
+
 
 
 // echo nl2br ("\n xxxxxxxxxxxxx \n");

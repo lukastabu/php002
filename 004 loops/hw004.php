@@ -1,6 +1,12 @@
 <?php
 echo nl2br ("\n xxxxxxxxxxxxx \n");
-echo nl2br ("\n Pirmas uzdavinys \n"); // padaryti, kad tilptu ekrane
+echo nl2br ("\n Pirmas uzdavinys \n");
+
+for($i = 0; $i < 400; $i++){
+    echo '<span style="display:inline-block">*</span>';
+}
+
+echo '<br><br>';
 
 for ($i=0; $i < 400; $i++) { 
     if (($i%50)==0) echo '<br>';
@@ -34,14 +40,18 @@ for ($i=0; $i < $a; $i++) {
 }
 
 echo nl2br ("\n xxxxxxxxxxxxx \n");
-echo nl2br ("\n Ketvirtas ir penktas uzdavinys \n"); // padaryti, kad butu monospace ir gautusi kvadratiskas, ir butu ispesta antra istrizaine
+echo nl2br ("\n Ketvirtas ir penktas uzdavinys \n");
 
-for ($i=0; $i < 10; $i++) { 
-    for ($j=0; $j < 10; $j++) { 
-        echo ($i==$j) ? "<font color=red>*</font>" : "*"; // || ($i== )
+echo '<div style="width: 350px; height: 350px">';
+for ($i=0; $i < 21; $i++) { 
+    echo '<div style="display:flex; justify-content:space-between;">';
+    for ($j=0; $j < 21; $j++) { 
+        echo ($j==$i || $j == 20 - $i) ? "<font color=red>*</font>" : '<div style="display:inline-block;">*</div>'; 
     }
-    echo '<br>';
+    // echo '<br>';
+    echo '</div>';
 }
+echo '</div>';
 
 
 echo nl2br ("\n xxxxxxxxxxxxx \n");
@@ -104,8 +114,28 @@ if (($petras > 221) && ($kazys > 221)) {
 
 
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Astuntas uzdavinys \n");
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Astuntas uzdavinys \n");
+
+$iBack = 0;
+echo '<div style:"width: 500px; height: 100px;">';
+for($i = 0; $i < 25; $i++){
+    if ($i < 13) {
+       $amoutOfStars = $i + ($i + 1);
+    } else {
+        $amoutOfStars = (2 * $i) - 3 - ($iBack * 4); 
+        $iBack++;
+    }   
+echo '<div style="display:flex; justify-content:center; width: 350px">';
+    for ($a = 0; $a < $amoutOfStars; $a++){
+        $red = rand(0, 225);
+        $green = rand(0, 225);
+        $blue = rand(0, 225);
+       echo "<div style='display:inline-block; letter-spacing: 5px; color: rgb($red, $green, $blue)'>*</div>";
+    }
+    echo '</div>';
+}
+echo '</div>';
 
 // echo nl2br ("\n xxxxxxxxxxxxx \n");
 // echo nl2br ("\n Devintas uzdavinys \n");
@@ -135,5 +165,28 @@ echo "reikes $visoDideliuSmugiu-iu dideliu smugiu";
 
 
 
-// echo nl2br ("\n xxxxxxxxxxxxx \n");
-// echo nl2br ("\n Vienuoliktas uzdavinys \n");
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+echo nl2br ("\n Vienuoliktas uzdavinys \n");
+
+$random200 = [];
+
+for ($i=1; $i < 201; $i++) { 
+    $random200[] = $i;
+}
+// print_r($random200);
+$random50 = array_rand($random200, 50);
+// print_r($random50);
+
+var_dump(implode(' ', $random50));
+echo nl2br ("\n xxxxxxxxxxxxx \n");
+
+$random50prime = [];
+
+foreach ($random50 as $value) {
+    if (!(($value % 2 == 0) || ($value % 3 == 0) || ($value % 5 == 0) || ($value % 7 == 0))) {
+        $random50prime[] = $value;
+    }
+}
+
+// print_r($random50prime);
+var_dump(implode(' ', $random50prime));
