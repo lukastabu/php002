@@ -54,3 +54,24 @@
   background-color: greenyellow;
   margin: 5px;
 }
+
+/* HW010 - REACT CLASS STATE */
+
+.Shape {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.kv-block {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: greenyellow;
+  margin: 5px;
+}

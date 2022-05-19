@@ -1,10 +1,10 @@
 import './App.css';
-import Labas from './Components/009/Greeting';
-import Kurmis from './Components/009/Kurmis';
-import Zib from './Components/HW009/3';
-import Zuikis from './Components/HW009/12';
-import Duprop from './Components/HW009/4';
-import Trysprop from './Components/HW009/5';
+import Labas from './Greeting';
+import Kurmis from './Kurmis';
+import Zib from '../009HW/3';
+import Zuikis from '../009HW/12';
+import Duprop from '../009HW/4';
+import Trysprop from '../009HW/5';
 
 
 function App() {
