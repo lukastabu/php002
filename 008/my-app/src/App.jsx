@@ -4,7 +4,6 @@ import axios from 'axios';
 
 function App() {  
 
-  const [count, setCount] = useState(1);
   const [cats, setCats] = useState([]);
 
   useEffect( () => {
@@ -23,7 +22,7 @@ function App() {
   return (
     <div className="App">
     <header className="App-header">
-    <div>{cats}</div>
+    <div>{cats}</div><br/>
     </header>
     </div>
   );
