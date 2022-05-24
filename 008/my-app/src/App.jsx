@@ -1,29 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import randNum from "./Functions/randNum";
+import axios from 'axios';
 
 function App() {  
 
-  const dogs = ['šuo', 'šunius', 'Bobikas', 'kudlius', 'Šarikas', 'avigalvis'];
-  const sortDogs = dogs.reverse();
+  const [count, setCount] = useState(1);
+  const [cats, setCats] = useState([]);
 
-  const [radius, setRadius] = useState("50%");
-  const [skaicius, setSkaicius] = useState (randNum);
-  
-  const set = () => {setRadius(r => radius === '0%' ? '50%' : '0%')};
-  const randomise = () => {setSkaicius (randNum)};
+  useEffect( () => {
+   console.log('GOOO');
+  }, []);   // pasileidzia bet kada, jei nera nk nurodyta, pridejus tuscia masyva - pasileis, tik kai jis pasikeis (o jis ihardkodintas)      
+
+
+  useEffect ( () => {
+    axios.get('http://localhost/bit22/php/011/')
+    .then (res => {
+      console.log(res.data);
+      setCats(res.data);
+    });
+  }, [])
 
   return (
     <div className="App">
     <header className="App-header">
-      <div>
-        {sortDogs.map((sortDog, i) => <div key={i} className="kv-block">{(i+1)}<br></br>{sortDog}</div>)
-        // kv.map ((k, i) => <div key={i} className="kv" style={{background: k}}>{i}</div>)
-      }</div>
-
-    {/* <div className="Shape" style={{borderRadius: radius}}>{skaicius}</div>
-    <button onClick={set}>CHANGE</button>
-    <button onClick={randomise}>RANDOM</button> */}
+    <div>{cats}</div>
     </header>
     </div>
   );
