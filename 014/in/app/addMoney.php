@@ -1,9 +1,13 @@
 <?php
 
-$title = 'Kambarys Nr. Antras';
+$title = 'ADD';
 
 require __DIR__ . '/views/top.php';
+?>
 
-echo '<h1>K2</h1>';
 
+<h1>User id: <?= $userId ?> </h1>
+
+
+<?php
 require __DIR__ . '/views/bottom.php';

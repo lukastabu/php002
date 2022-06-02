@@ -1,3 +1,9 @@
 <?php
 
-echo '<h1>KAMBARYS 1</h1>';
+$title = 'Kambarys Nr. 1';
+
+require DIR . 'views/top.php';
+
+echo '<h1>Kambarys 1</h1>';
+
+require DIR . 'views/bottom.php';
