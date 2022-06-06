@@ -1,0 +1,15 @@
+{
+    "name": "lukas/obankas",
+    "autoload": {
+        "psr-4": {
+            "Obankas\\": "src/app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lukas",
+            "email": "lukas.tabulevicius@gmail.com"
+        }
+    ],
+    "require": {}
+}
