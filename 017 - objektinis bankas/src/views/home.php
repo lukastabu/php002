@@ -1,7 +1,5 @@
 <?php
 
-$title = '';
-
 require __DIR__ . '/top.php';
 ?>
 

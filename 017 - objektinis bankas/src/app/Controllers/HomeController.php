@@ -16,6 +16,16 @@ class HomeController {
         'list' => $list]);
     }
 
+    public function indexJson()
+    {
+        $list = [];
+        for ($i=0; $i < 10; $i++) { 
+            $list[] = rand(10, 99);
+        }
+        return App::json(['title' => 'Obankis',
+        'list' => $list]);
+    }
+
     public function form()
     {
         return App::view('form', ['messages'=> M::get()]);
