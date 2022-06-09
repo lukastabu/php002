@@ -2,7 +2,7 @@
 
 $cats = ['Rainius', 'Taskius'];
 
-if (!file_exists(__DIR__/'/cats.json')) {
+if (!file_exists(__DIR__.'/cats.json')) {
     file_put_contents(__DIR__.'/cats.json', json_encode([]));
 }
 
@@ -13,5 +13,15 @@ $nowCats = json_decode(file_get_contents(__DIR__.'/cats.json'));
 $nowCats[] = 'Micius';
 
 file_put_contents(__DIR__.'/cats.json', json_encode($nowCats));
+
+print_r($nowCats);
+
+$nowCats = json_decode(file_get_contents(__DIR__.'/cats.json'));
+
+$nowCats[0] = 'Rainys';
+
+
+file_put_contents(__DIR__.'/cats.json', json_encode($nowCats));
+
 
 print_r($nowCats);
