@@ -6,7 +6,7 @@ use Ganykla\Controllers\HomeController;
 
 class App
 {
-    const DOMAIN = '//http://localhost/bit22/php/ganykla/public';
+    const DOMAIN = '//localhost/bit22/php/ganykla/public';
 
     public static function start()
     {

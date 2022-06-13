@@ -26,12 +26,9 @@ class HomeController
 
     public function keep()
     {
-        if ($_POST['add'] <=0 ) {
-            return App::redirect("");
-        }
         $unit = [];
         $unit = [
-            'gyvunas' => ($_POST['gyvunas'] ?? 0),
+            'animals' => ($_POST['animals'] ?? 0),
             'svoris' => ($_POST['svoris'] ?? 0)
         ];
         JsonDb::get()->create($unit);
