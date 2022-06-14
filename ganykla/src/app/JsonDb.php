@@ -9,7 +9,7 @@ class JsonDb implements DataBase
 
     public static function get()
     {
-        return self::$me ?? new self;
+        return self::$me ?? self::$me = new self;
     }
 
     public function __construct()
