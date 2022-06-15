@@ -1,18 +1,9 @@
 <?php
 
+use BankasV2\Converter as Converter;
+require __DIR__ . '../../services/Converter.php';
+
 require __DIR__ . '/top.php';
-
-//https://stackoverflow.com/questions/50921997/how-to-convert-currency-using-google-currency-api-in-php
-function currency_convert($amount){
-    $url = 'https://api.exchangerate-api.com/v4/latest/EUR';
-    $json = file_get_contents($url);
-    $exp = json_decode($json);
-
-    $convert = $exp->rates->UAH;
-
-    return $convert * $amount;
-}
-
 ?>
 <main class="main saskaitos">
     <h3>Sąskaitų sąrašas</h3>
@@ -32,10 +23,7 @@ function currency_convert($amount){
                 <br>
                 <span>Turimos lėšos eurais: <span class="value"></span><?= $user['suma'] ?></span>
                 <br>
-                <span>Turimos lėšos ukrainais: <span class="value"></span><?= currency_convert($user['suma']) ?></span>
-                <!-- <div>
-
-                </div> -->
+                <span>Turimos lėšos ukrainais: <span class="value"></span><?= Converter::currency_convert($user['suma']) ?></span>
 
                 <div class="action2">
                 <form action="<?= $link.'delete/'.$user['client']?>" method="post">
