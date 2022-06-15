@@ -1,41 +1,56 @@
 <?php
 
+require __DIR__ . '/Cache.php';
 session_start();
+$cache = new Cache;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$ch = curl_init();
+    $_SESSION['vizualumas'] = 'CACHE';
+    $output = $cache->get();
+    if (null === $output) {
 
-curl_setopt($ch, CURLOPT_URL, 'https://www.distance24.org/route.json?stops='.$_POST['from'].'|'.$_POST['to']);
+        $_SESSION['vizualumas'] = 'LIVE';
 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $ch = curl_init();
 
-$output = curl_exec($ch); // siuncia, laukia, gauna
+        curl_setopt($ch, CURLOPT_URL, 'https://www.distance24.org/route.json?stops=' . $_POST['from'] . '|' . $_POST['to']);
 
-curl_close($ch);     
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-$output = json_decode($output);
+        $output = curl_exec($ch); // siuncia, laukia, gauna
 
-$_SESSION['dist'] = $output->distance;
-$_SESSION['img1'] = $output->stops[0]->wikipedia->image;
+        curl_close($ch);
 
-header('Location: http://localhost/bit22/php/024-api/');
-die;}
+        $output = json_decode($output);
+
+        $cache->set($output);
+    }
+
+    $_SESSION['dist'] = $output->distance;
+    $_SESSION['img1'] = $output->stops[0]->wikipedia->image;
+
+    header('Location: http://localhost/bit22/php/024-api/');
+    die;
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $dist = $_SESSION['dist'] ?? '';
     $img1 = $_SESSION['img1'] ?? '';
-    unset($_SESSION['dist'], $_SESSION['img1']);
-    ?>
+    $vizualas = $_SESSION['vizualumas'] ?? 'dar nenaudotas cache';
+    unset($_SESSION['dist'], $_SESSION['img1'], $_SESSION['vizualumas']);
+?>
+    <h1 style="color:green;"><?= $vizualas ?></h1>
     <form action="" method="post">
         from: <input type="text" name="from">
         to: <input type="text" name="to">
         <button type="submit">CALC</button>
     </form>
     <h2><?= $dist ?></h2>
-    <?php if( $img1): ?>
+    <?php if ($img1) : ?>
 
         <img src="<?= $img1 ?>">
 
     <?php endif ?>
-    <?php
+<?php
 }
