@@ -9,17 +9,18 @@ import axios from 'axios';
 function App() {
   const [animals, setAnimals] = useState([]);
   const [createAnimal, setCreateAnimal] = useState(null);
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   useEffect(() => {
     axios.get('http://localhost/bit22/php/server-ganykla/animals')
     .then(res=> setAnimals(res.data))
     // .then(res => setAnimals(res.data));
-  }, []);
+  }, [lastUpdate]);
 
   useEffect(() => {
     if(null === createAnimal) return;
     axios.post('http://localhost/bit22/php/server-ganykla/animals', createAnimal)
-      .then(res => console.log(res.data));
+      .then(_ => setLastUpdate(Date.now()));
   }, [createAnimal]);
 
 
