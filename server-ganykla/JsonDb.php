@@ -1,6 +1,6 @@
 <?php
 
-class JsonDB
+class JsonDb
 {
     private $data, $file;
 

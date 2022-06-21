@@ -1,8 +1,6 @@
 <?php
 //settings
 
-use JsonDB;
-
 define('INSTALL', '/bit22/php/server-ganykla/');
 define('DIR', __DIR__ .'/app/');
 define('URL', 'http://localhost/bit22/php/server-ganykla/');
@@ -21,7 +19,13 @@ if ($m == 'GET' AND count($uri) == 1 AND $uri[0] === 'animals') {
 
     $out = $db->showAll('farm');
 }
-
+if ($m == 'POST' && count($uri) == 1 && $uri[0] == 'animals') {
+    $rawData = file_get_contents("php://input");
+    
+    $data = json_decode($rawData, 1);
+    $db->create($data);
+    $out = ['msg' => 'OK, donkey'];
+}
 
 
 $out = json_encode($out);
@@ -29,8 +33,7 @@ $out = json_encode($out);
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: X-Requested-With");
-
+header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
 
 echo $out;
 
@@ -62,4 +65,4 @@ echo $out;
 
 
 // print_r($_SERVER);
-print_r($uri);
+// print_r($uri);
