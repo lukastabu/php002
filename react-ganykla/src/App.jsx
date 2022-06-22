@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import './bootstrap.css';
+import './App.scss';
 import Create from './Components/Create';
 import DataContext from './Components/DataContext';
 import List from './Components/List';
 import axios from 'axios';
+import Edit from './Components/Edit';
 
 function App() {
   const [animals, setAnimals] = useState([]);
   const [createAnimal, setCreateAnimal] = useState(null);
+  const [deleteAnimal, setDeleteAnimal] = useState(null);
+  const [modalAnimal, setmodalAnimal] = useState(1);
+  
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   useEffect(() => {
@@ -23,12 +27,20 @@ function App() {
       .then(_ => setLastUpdate(Date.now()));
   }, [createAnimal]);
 
+  useEffect(() => {
+    if(null === deleteAnimal) return;
+    axios.delete('http://localhost/bit22/php/server-ganykla/animals/' + deleteAnimal.id)
+      .then(_ => setLastUpdate(Date.now()));
+  }, [deleteAnimal]);
 
 return (
   <DataContext.Provider value={
     {
       animals, 
-      setCreateAnimal
+      setCreateAnimal,
+      setDeleteAnimal,
+      modalAnimal,
+      setmodalAnimal
       }
   }>
 <div className="container">
@@ -37,6 +49,7 @@ return (
     <List />
   </div>
 </div>
+<Edit />
 </DataContext.Provider>
   );
 }

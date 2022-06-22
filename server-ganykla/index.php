@@ -19,6 +19,7 @@ if ($m == 'GET' AND count($uri) == 1 AND $uri[0] === 'animals') {
 
     $out = $db->showAll('farm');
 }
+
 if ($m == 'POST' && count($uri) == 1 && $uri[0] == 'animals') {
     $rawData = file_get_contents("php://input");
     
@@ -27,12 +28,17 @@ if ($m == 'POST' && count($uri) == 1 && $uri[0] == 'animals') {
     $out = ['msg' => 'OK, donkey'];
 }
 
+if ($m == 'DELETE' && count($uri) == 2 && $uri[0] == 'animals') {
+    
+    $db->delete($uri[1]);
+    $out = ['msg' => 'OK, deleted'];
+}
 
 $out = json_encode($out);
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
+header('Access-Control-Allow-Methods: GET, POST, DELETE');
 header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
 
 echo $out;
