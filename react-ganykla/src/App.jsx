@@ -11,7 +11,8 @@ function App() {
   const [animals, setAnimals] = useState([]);
   const [createAnimal, setCreateAnimal] = useState(null);
   const [deleteAnimal, setDeleteAnimal] = useState(null);
-  const [modalAnimal, setmodalAnimal] = useState(1);
+  const [editAnimal, setEditAnimal] = useState(null);
+  const [modalAnimal, setModalAnimal] = useState(null);
   
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
@@ -33,6 +34,12 @@ function App() {
       .then(_ => setLastUpdate(Date.now()));
   }, [deleteAnimal]);
 
+  useEffect(() => {
+    if(null === editAnimal) return;
+    axios.put('http://localhost/bit22/php/server-ganykla/animals/' + editAnimal.id, editAnimal)
+      .then(_ => setLastUpdate(Date.now()));
+  }, [editAnimal]);
+
 return (
   <DataContext.Provider value={
     {
@@ -40,7 +47,8 @@ return (
       setCreateAnimal,
       setDeleteAnimal,
       modalAnimal,
-      setmodalAnimal
+      setModalAnimal,
+      setEditAnimal
       }
   }>
 <div className="container">

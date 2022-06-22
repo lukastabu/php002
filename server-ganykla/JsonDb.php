@@ -55,6 +55,7 @@ class JsonDb
     function update(int $id, array $data) : void {
         foreach($this->data as $key => $value) {
             if ($value['id'] == $id) {
+                $data['id'] = $id;
                 $this->data[$key] = $data;
                 break;
             }

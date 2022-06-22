@@ -34,11 +34,19 @@ if ($m == 'DELETE' && count($uri) == 2 && $uri[0] == 'animals') {
     $out = ['msg' => 'OK, deleted'];
 }
 
+if ($m == 'PUT' && count($uri) == 2 && $uri[0] == 'animals') {
+    $rawData = file_get_contents("php://input");
+    
+    $data = json_decode($rawData, 1);
+    $db->update($uri[1], $data);
+    $out = ['msg' => 'OK, edited'];
+}
+
 $out = json_encode($out);
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, DELETE');
+header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT');
 header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
 
 echo $out;
