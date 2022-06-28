@@ -1,0 +1,17 @@
+{
+    "name": "app/db",
+    "description": "banko duomenu skaitytuvas-rasytuvas",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\Db\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lukas",
+            "email": "lukas.tabulevicius@gmail.com"
+        }
+    ],
+    "require": {}
+}

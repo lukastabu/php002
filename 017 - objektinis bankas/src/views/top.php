@@ -8,4 +8,5 @@
     <title><?= $title ?? 'no name' ?></title>
 </head>
 <body>
+<?php require __DIR__ . '/log.php' ?>
 <?php require __DIR__ . '/messages.php' ?>

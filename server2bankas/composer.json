@@ -1,0 +1,18 @@
+{
+    "name": "user/bankas-v2",
+    "description": "OOP Bank",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "BankasV2\\": "src/app/",
+            "App\\DB\\": "src/app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lukas",
+            "email": "lukas.tabulevicius@gmail.com"
+        }
+    ],
+    "require": {}
+}

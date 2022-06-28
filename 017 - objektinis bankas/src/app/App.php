@@ -7,6 +7,7 @@ use Obankas\Messages;
 class App {
 
     const DOMAIN = 'bankas.lt';
+    const APP = __DIR__ . "/../"
 
     private static $html;
 
@@ -50,6 +51,16 @@ class App {
     private static function route(array $uri)
     {
         $m = $_SERVER['REQUEST_METHOD'];
+        //LOGIN
+        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'login') {
+            return (new LoginController)->showLogin();
+        }
+        if ('POST' == $m && count($uri) == 1 && $uri[0] === 'login') {
+            return (new LoginController)->doLogin();
+        }
+        if ('POST' == $m && count($uri) == 1 && $uri[0] === 'logout') {
+            return (new LoginController)->doLogout();
+        }
 
         if (count($uri) == 1 && $uri[0] === '') {
             return (new HomeController)->index();
