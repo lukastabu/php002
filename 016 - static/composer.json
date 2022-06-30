@@ -1,0 +1,17 @@
+{
+    "name": "hi/16",
+    "autoload": {
+        "psr-4": {
+            "Hi\\16\\": "src/",
+            "Broool\\": "",
+            "Braach\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Lukas",
+            "email": "lukas.tabulevicius@gmail.com"
+        }
+    ],
+    "require": {}
+}

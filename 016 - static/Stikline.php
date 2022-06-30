@@ -14,7 +14,7 @@ class Stikline {
 
     public function kas()
     {
-        echo '<br>xx>> '.self::$gerimas;
+        echo '<br> xx>> '.self::$gerimas;
     }
 
 }

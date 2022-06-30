@@ -16,6 +16,8 @@ class Cart {
     }
 
     private function __clone(){}
-    private function sleep(){}
-    private function wakeup(){}
+    private function sleep() {
+        return[];
+    }
+    private function wakeup() {}
 }
