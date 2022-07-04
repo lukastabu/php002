@@ -1,0 +1,1 @@
+<h1>suma yra {{$rez}}</h1>
