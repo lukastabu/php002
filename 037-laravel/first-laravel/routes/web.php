@@ -29,3 +29,7 @@ Route::get('/ate/{vardas?}', [hi::class, 'ate']);
 Route::get('/hibye/{la}/{ba}', [hi::class, 'hibye']);
 
 Route::get('/suma/{a}/{b}', [sum::class, 'sumarum']);
+
+Route::get('/skirtumas', [sum::class, 'skirtum']) -> name('formike');
+
+Route::post('/skirtumas', [sum::class, 'calculate']) -> name('skaiciuotuvas');
