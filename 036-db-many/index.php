@@ -33,7 +33,7 @@ $item = $stmt->fetchAll();
 
 $out = [];
 
-// dar neveikia vv
+// jau veikia vv
 foreach ($item as $i) 
 {
     if (!isset($out[$i['p_id']]))
@@ -49,3 +49,4 @@ foreach ($item as $i)
 // }
 // echo '</ul>';
 
+print_r($out);
