@@ -1,3 +1,6 @@
+@extends('mainexmp')
+
+@section('content')
 @if($ro !== '')
 <h1> Rezultatas yra: {{$ro}}</h1>
 @endif
@@ -10,8 +13,11 @@
 
 <ul>
 @foreach ($colors as $color)
-    <li>
-    {{$color->id}}: {{$color->color}} 
-    </li>
+@include('post.li')
 @endforeach
 <ul>
+@endsection
+
+@section('title')
+Random Page Name
+@endsection

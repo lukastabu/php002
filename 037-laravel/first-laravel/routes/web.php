@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HelloController as hi;
 use App\Http\Controllers\SumaController as sum;
+use App\Http\Controllers\ColorController as C;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,17 @@ Route::get('/suma/{a}/{b}', [sum::class, 'sumarum']);
 Route::get('/skirtumas', [sum::class, 'skirtum']) -> name('formike');
 
 Route::post('/skirtumas', [sum::class, 'calculate']) -> name('skaiciuotuvas');
+
+// COLORS ROUTERS
+
+Route::get('/colors', [C::class, 'index'])->name('color-index');
+
+Route::get('/colors/create', [C::class, 'create'])->name('color-create');
+
+Route::post('/colors', [C::class, 'store'])->name('color-store');
+
+Route::get('/colors/edit/{color}', [C::class, 'edit'])->name('color-edit');
+
+Route::put('/colors/{color}', [C::class, 'update'])->name('color-update');
+
+Route::delete('/colors/{color}', [C::class, 'destroy'])->name('color-delete');

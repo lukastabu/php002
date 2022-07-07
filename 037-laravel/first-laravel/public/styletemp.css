@@ -1,0 +1,27 @@
+form, 
+li {
+    padding-top: 20px;
+    list-style: none;
+    display: block;
+}
+
+.spalvdeze {
+    width: 150px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(89, 88, 88);
+}
+
+form {
+    margin: 100px;
+    border: 1px solid gray;
+    padding-bottom: 20px;
+}
+
+.trintukas{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
