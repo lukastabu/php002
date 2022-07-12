@@ -12,9 +12,18 @@ class ColorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $colors = Color::all();
+        // $colors = Color::all()->sortByDesc('name');
+        $colors = Color::orderBy('name')->get();
+        // $colors = Color::orderBy('name', 'desc')->orderBy('color', 'asc')->get();
+        // $colors = Color::where('id', '>', 1)->orderBy('name')->get();
+
+        $colors = match($request->sort) {
+            'asc' => Color::orderBy('name', 'asc')->get(),
+            'desc' => Color::orderBy('name', 'desc')->get(),
+            default => Color::all(),
+        };
 
         return view('color.index', ['colors' => $colors]);
     }
@@ -39,11 +48,13 @@ class ColorController extends Controller
     {
         $color = new Color;
 
+        $color -> name = $request->create_color_name ?? 'No name yet';
+
         $color -> color = $request->create_color_input;
 
         $color -> save();
 
-        return redirect()->route('color-index');
+        return redirect()->route('color-index')->with('success', 'Your new color is added');
     }
 
     /**
@@ -52,9 +63,11 @@ class ColorController extends Controller
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function show(Color $color)
+    public function show(int $colorId)
     {
-        //
+        $color = Color::where('id', $colorId)->first();
+
+        return view('color.show', ['color' => $color]);
     }
 
     /**
@@ -77,8 +90,10 @@ class ColorController extends Controller
      */
     public function update(Request $request, Color $color)
     {
-        $color -> color = $request->create_color_input;
+        $color -> name = $request->create_color_name ?? 'No name yet';
 
+        $color -> color = $request->create_color_input;
+        
         $color -> save();
 
         return redirect()->route('color-index');
@@ -94,6 +109,6 @@ class ColorController extends Controller
     {
         $color -> delete();
 
-        return redirect()->route('color-index');
+        return redirect()->route('color-index')->with('deleted', 'Your color is deleted');
     }
 }

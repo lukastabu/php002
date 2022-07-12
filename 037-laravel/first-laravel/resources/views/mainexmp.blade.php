@@ -8,6 +8,8 @@
     <title>@yield('title')</title>
 </head>
 <body>
+    @include("msg.messages")
+    @include("parts.nav")
     @yield('content')
 </body>
 </html>
