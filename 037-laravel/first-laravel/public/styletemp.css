@@ -1,3 +1,7 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 form, 
 li {
     padding-top: 20px;
@@ -12,6 +16,11 @@ li {
     justify-content: center;
     align-items: center;
     color: rgb(89, 88, 88);
+    flex-direction: column;
+}
+
+.spalvdeze > h3 {
+    margin: 5px;
 }
 
 form {
@@ -24,4 +33,42 @@ form {
     margin: 0;
     border: 0;
     padding: 0;
+}
+
+.alert-success {
+    background-color: lightgreen;
+    padding: 10px;
+}
+
+.alert-deleted{
+    color: white;
+    background-color: red;
+    display: flex;
+    padding: 10px;
+}
+
+nav{
+    margin: 20px 0 0 20px;
+}
+
+nav > a {
+    background-color: royalblue;
+    color: white;
+    text-decoration: none;
+    border: 1px solid rebeccapurple;
+    padding: 10px;
+}
+.srt-menu {
+    margin: 20px 0 0 20px;
+    padding-top: 20px;
+    list-style: none;
+    display: block;
+}
+.srt-btn {
+    background-color: rgb(8, 28, 89);
+    color: white;
+    text-decoration: none;
+    border: 1px solid rebeccapurple;
+    padding: 5px;
+    border-radius: 15px;
 }

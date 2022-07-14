@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController as hi;
 use App\Http\Controllers\SumaController as sum;
 use App\Http\Controllers\ColorController as C;
+use App\Http\Controllers\AnimalController as A;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,20 @@ Route::put('/colors/{color}', [C::class, 'update'])->name('color-update');
 Route::delete('/colors/{color}', [C::class, 'destroy'])->name('color-delete');
 
 Route::get('/colors/show/{id}', [C::class, 'show'])->name('color-show');
+
+
+// ANIMAL ROUTERS
+
+Route::get('/animals', [A::class, 'index'])->name('animal-index');
+
+Route::get('/animals/create', [A::class, 'create'])->name('animal-create');
+
+Route::post('/animals', [A::class, 'store'])->name('animal-store');
+
+Route::get('/animals/edit/{animal}', [A::class, 'edit'])->name('animal-edit');
+
+Route::put('/animals/{animal}', [A::class, 'update'])->name('animal-update');
+
+Route::delete('/animals/{animal}', [A::class, 'destroy'])->name('animal-delete');
+
+Route::get('/animals/show/{id}', [A::class, 'show'])->name('animal-show');

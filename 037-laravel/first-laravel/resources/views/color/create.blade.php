@@ -1,5 +1,6 @@
 @extends('mainexmp')
 @section('content')
+    <h2>Creating New Color</h2>
     <ul>
         <form action="{{ route('color-store') }}" method="POST">
             Name of Color: <input type="text" name="create_color_name" />
