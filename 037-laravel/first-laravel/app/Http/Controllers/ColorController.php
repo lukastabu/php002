@@ -107,8 +107,13 @@ class ColorController extends Controller
      */
     public function destroy(Color $color)
     {
-        $color -> delete();
+        if(!$color ->takeanimal->count()) {
+            $color -> delete();
+            return redirect()->route('color-index')->with('deleted', 'Your color is deleted');
+        }
+        return redirect()->back()->with('deleted', 'Your color has linked animals - deletion is not allowed');
+    
 
-        return redirect()->route('color-index')->with('deleted', 'Your color is deleted');
+
     }
 }
