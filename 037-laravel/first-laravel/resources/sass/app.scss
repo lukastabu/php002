@@ -1,8 +1,24 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+body {
+    font-family: 'Kanit', sans-serif;
+}
+
+.spalvdeze {
+    border-radius: 10px;
+    display: flex;
+    text-shadow: 1px 1px whitesmoke;
+};
+
+.act-menu {
+    display: flex; 
+    align-items:center;
+    justify-items: flex-end;
+};
