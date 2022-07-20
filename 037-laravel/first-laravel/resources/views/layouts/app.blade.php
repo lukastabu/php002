@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -63,9 +63,11 @@
                                     <a class="dropdown-item" href="{{ route('color-index') }}">
                                         Color List
                                     </a>
+                                    @if(Auth::user()->role > 3 )
                                     <a class="dropdown-item" href="{{ route('color-create') }}">
                                         New Color
                                     </a>
+                                    @endif
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -77,9 +79,11 @@
                                     <a class="dropdown-item" href="{{ route('animal-index') }}">
                                         Animal List
                                     </a>
+                                    @if(Auth::user()->role > 3 )
                                     <a class="dropdown-item" href="{{ route('animal-create') }}">
                                         New Animal
                                     </a>
+                                    @endif
                                 </div>
                             </li>
 

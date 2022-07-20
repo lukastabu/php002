@@ -6,18 +6,19 @@
                 <div class="card">
                     <div class="card-header">Create Animal</div>
 
-                    <div class="card-body">
+                    <div class="card-body list-group">
                         <form action="{{ route('animal-store') }}" method="POST">
-                            Animal Name: <input type="text" name="create_animal_name" />
-                            Animal Height: <input type="number" name="create_animal_height" />
-                            Animal Color:
+                            <li class="list-group-item">Animal Name: <input type="text" name="create_animal_name" /></li>
+                            <li class="list-group-item">Animal Height: <input type="number" name="create_animal_height" /></li>
+                            <li class="list-group-item">Animal Color:
                             <select name="create_color_id">
                                 @foreach ($colors as $color)
                                     <option value="{{ $color->id }}">{{ $color->name }}</option>
                                 @endforeach
                             </select>
+                            </li>
                             @csrf
-                            <button class="btn btn-outline-success" type="submit">ADD THIS</button>
+                            <button class="btn btn-outline-success" type="submit">Add Animal</button>
                         </form>
                     </div>
                 </div>

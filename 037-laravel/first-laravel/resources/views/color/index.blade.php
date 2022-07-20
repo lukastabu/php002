@@ -22,12 +22,14 @@
                                     </div>
                                 </li>
                                 <a class="btn btn-outline-primary" href="{{ route('color-show', $color->id) }}">Explore this color!</a>
+                                @if(Auth::user()->role > 3 )
                                 <a class="btn btn-outline-success" href="{{ route('color-edit', $color) }}">Edit this color!</a>
                                 <form class="trintukas" action="{{ route('color-delete', $color) }}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-outline-danger" type="submit">REMOVE THIS</button>
                                 </form>
+                                @endif
 
                             @empty
                                 <li class="list-group-item">Nothing to show :/</li>

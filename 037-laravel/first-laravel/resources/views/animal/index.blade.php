@@ -27,15 +27,15 @@
                                     </div>
                                 </li>
                                 <div class="act-menu">
-                                <a class="btn btn-outline-primary mr-1" href="{{ route('animal-show', $animal->id) }}">Explore
-                                    this animal!</a>
-                                <a class="btn btn-outline-success m-1" href="{{ route('animal-edit', $animal) }}">Edit this
-                                    animal!</a>
+                                <a class="btn btn-outline-primary mr-1" href="{{ route('animal-show', $animal->id) }}">Explore this animal!</a>
+                                @if(Auth::user()->role > 3 )
+                                <a class="btn btn-outline-success m-1" href="{{ route('animal-edit', $animal) }}">Edit this animal!</a>
                                 <form class="trintukas" action="{{ route('animal-delete', $animal) }}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-outline-danger ml-1" type="submit">Remove this</button>
                                 </form>
+                                @endif
                                 </div>
 
                             @empty
