@@ -6,6 +6,7 @@ use App\Http\Controllers\HelloController as hi;
 use App\Http\Controllers\SumaController as sum;
 use App\Http\Controllers\ColorController as C;
 use App\Http\Controllers\AnimalController as A;
+use App\Http\Controllers\FrontController as F;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,11 @@ use App\Http\Controllers\AnimalController as A;
 Route::get('/', function () {
     return view('welcome');
 });
+// FRONT ROUTER
+
+Route::get('', [F::class, 'index'])->name('front-index');
+
+// TEST ROUTERS
 
 Route::get('/labas', fn () => 'Labas, Lara');
 
@@ -68,6 +74,10 @@ Route::put('/animals/{animal}', [A::class, 'update'])->name('animal-update')->mi
 Route::delete('/animals/{animal}', [A::class, 'destroy'])->name('animal-delete')->middleware('rw:admin');
 
 Route::get('/animals/show/{id}', [A::class, 'show'])->name('animal-show')->middleware('rw:user');
+
+
+
+// Auth routes
 
 Auth::routes();
 

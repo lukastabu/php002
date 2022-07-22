@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => 'Colorful Animals',
+    'name' => env('Colorful Animals', 'Colorful Animals'),
 
     /*
     |--------------------------------------------------------------------------

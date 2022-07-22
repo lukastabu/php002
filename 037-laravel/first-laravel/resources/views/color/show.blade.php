@@ -14,12 +14,14 @@
                                     <span>{{ $color->color }}</span>
                                 </div>
                             </li>
-                            <a class="btn btn-outline-success" href="{{ route('color-edit', $color) }}">Edit this color!</a>
+                            @if(Auth::user()->role > 3 )
+                            <a class="btn btn-outline-success" href="{{ route('color-edit', $color) }}">Edit this color</a>
                             <form class="trintukas" action="{{ route('color-delete', $color) }}" method="POST">
                                 @csrf
                                 @method('delete')
-                                <button class="btn btn-outline-danger" type="submit">REMOVE THIS</button>
+                                <button class="btn btn-outline-danger" type="submit">Remove it</button>
                             </form>
+                            @endif
                         </ul>
                     </div>
                 </div>
