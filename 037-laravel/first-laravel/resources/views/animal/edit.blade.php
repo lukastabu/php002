@@ -15,7 +15,8 @@
                             <select name="create_color_id">
                                 @foreach ($colors as $color)
                                     <option value="{{ $color->id }}" @if ($color->id == $animal->color_id) selected @endif>
-                                        {{ $color->name }}</option>
+                                        {{ $color->name }}
+                                    </option>
                                 @endforeach
                             </select> </li>
 

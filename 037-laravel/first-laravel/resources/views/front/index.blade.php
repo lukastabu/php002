@@ -33,11 +33,14 @@
                                     <button class="btn btn-outline-danger ml-1" type="submit">Remove this</button>
                                 </form>
                                 @endif --}}
-                                <form class="krepselis" action="" method="POST">
+                                @if(Auth::user()?->role>0)
+                                <form class="krepselis" action="{{ route('order-add') }}" method="POST">
+                                    <input type="" name="animal_id" value={{ $animal->id }} hidden/>
+                                    <input type="" name="count" value=1 hidden/>
                                     @csrf
-                                    @method('post')
-                                    <button class="btn btn-outline-warning ml-1" type="submit">Cart this</button>
+                                    <button class="btn btn-outline-warning ml-1" type="submit">Order this</button>
                                 </form>
+                                @endif
                                 </div>
 
                             @empty
