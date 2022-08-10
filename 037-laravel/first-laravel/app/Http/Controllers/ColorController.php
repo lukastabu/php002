@@ -117,8 +117,10 @@ class ColorController extends Controller
             return redirect()->route('color-index')->with('deleted', 'Your color is deleted');
         }
         return redirect()->back()->with('deleted', 'Your color has linked animals - deletion is not allowed');
-    
+    }
 
-
+    public function lone_link()
+    {
+        abort(403);
     }
 }

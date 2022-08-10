@@ -71,6 +71,8 @@ Route::delete('/colors/{color}', [C::class, 'destroy'])->name('color-delete')->m
 
 Route::get('/colors/show/{id}', [C::class, 'show'])->name('color-show')->middleware('rw:user');
 
+Route::get('/colors/show', [C::class, 'lone_link'])->name('color-show-routing');
+
 
 // ANIMAL ROUTERS
 
